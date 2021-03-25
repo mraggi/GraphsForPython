@@ -46,9 +46,4 @@ class Graph():
         self.neighbors_sorted = True
     
     def edges(self):
-        A = []
-        for u in range(self.num_vertices):
-            for v, w in self.neighbors_with_weights(u):
-                if u < v:
-                    A.append((u, v, w))
-        return A
+        return [(u,v,w) for u in self.vertices() for v,w in self.neighbors_with_weights(u) if u < v]
